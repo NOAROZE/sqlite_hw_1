@@ -1,0 +1,127 @@
+-----------------------תרגיל 1: שאילתות SELECT-------------------
+
+----הצג את כל התלמידים בטבלה----
+SELECT * 
+FROM STUDENTS;
+
+----הצג רק את השם והציון של כל תלמיד----
+SELECT NAME, GRADE 
+FROM STUDENTS;
+
+----הצג את ממוצע הציונים----
+SELECT avg(GRADE)
+FROM STUDENTS;
+
+----- מצא את שנת הלידה הכי מוקדמת---
+SELECT min(BIRTHYEAR)
+FROM STUDENTS;
+
+
+---------------------------✍️ תרגיל 2: סינון עם WHERE------------------------
+
+---5 הצג את כל התלמידים שקיבלו ציון מעל 80---
+SELECT *
+FROM STUDENTS
+WHERE GRADE > 80;
+
+----הצג את כל התלמידים שנולדו אחרי 2005----
+SELECT *
+FROM STUDENTS
+WHERE BIRTHYEAR > 2005;
+
+----הצג את כל התלמידים בכיתה H1----
+SELECT *
+FROM STUDENTS
+WHERE CLASS = 'H1';
+
+----הצג תלמידים ששמם מכיל את האות i-----
+SELECT *
+FROM STUDENTS
+WHERE NAME like '%i%';
+
+
+
+---------------------------------✍️ תרגיל 3: מיון והגבלה--------------------------
+
+---הצג את שלושת התלמידים עם הציון הגבוה ביותר----
+SELECT *
+FROM STUDENTS
+ORDER by GRADE DESC LIMIT 3;
+
+-----הצג את שמות התלמידים לפי שנת לידה מהישן לחדש------
+SELECT NAME
+FROM STUDENTS
+ORDER by BIRTHYEAR;
+
+----הצג את שלושת התלמידים הראשונים בטבלה-----
+SELECT *
+FROM STUDENTS
+ORDER by ID LIMIT 3;
+
+---דלג על 2 שורות והצג את 3 הבאות---
+SELECT *
+FROM STUDENTS
+ORDER by ID LIMIT 3 OFFSET 2;
+
+
+
+-----------------------------------✍️ תרגיל 4: עדכון ומחיקה-----------------------
+
+------ עדכן את הציון של תלמיד בשם Dana ל־100---------
+UPDATE STUDENTS
+SET GRADE = 100
+WHERE NAME = 'Dana';
+
+------- שנה את הכיתה ל־GRADUATED לכל תלמיד שנולד לפני 2010----
+UPDATE STUDENTS
+SET CLASS = 'GRADUATED '
+WHERE BIRTHYEAR < 2010;
+
+---מחק את התלמיד ששמו Tom---
+DELETE FROM STUDENTS
+WHERE NAME = 'Tom';
+
+
+
+
+-----------------------------⭐ תרגיל בונוס - רשות**-------------------
+
+----הצג את מספר התלמידים בכל כיתה-----
+SELECT 'H1', COUNT(*)
+FROM STUDENTS
+WHERE CLASS = 'H1';
+SELECT 'H2', COUNT(*) 
+FROM STUDENTS
+WHERE CLASS = 'H2';
+SELECT 'GRADUATED ', COUNT(*) 
+FROM STUDENTS
+WHERE CLASS = 'GRADUATED ';
+SELECT 'W2', COUNT(*) 
+FROM STUDENTS
+WHERE CLASS = 'W2';
+
+----הצג את גיל כל תלמיד לפי שנת לידה----
+SELECT NAME, 2025 - BIRTHYEAR
+FROM STUDENTS
+ORDER BY BIRTHYEAR;
+
+----הצג את התלמיד עם הציון הכי נמוך----
+SELECT *
+FROM STUDENTS
+ORDER BY GRADE LIMIT 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
